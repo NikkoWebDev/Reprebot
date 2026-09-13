@@ -1,0 +1,722 @@
+[
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/departamentos/departamento-ingenieria-sistemas-industrial",
+  "title": "Departamento de Ingeniería de Sistemas e Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 682889,
+  "discovered_from": "seed",
+  "is_document": false,
+  "depth": 0
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/areas-curriculares/area-curricular-ingenieria-sistemas-industrial",
+  "title": "Área curricular de Ingeniería de Sistemas e Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 739380,
+  "discovered_from": "seed",
+  "is_document": false,
+  "depth": 0
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/programas-academicos/ingenieria-de-sistemas-y-computacion",
+  "title": "Ingeniería de Sistemas y Computación | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 597738,
+  "discovered_from": "seed",
+  "is_document": false,
+  "depth": 0
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/programas-academicos/maestria-en-ingenieria-de-sistemas-y-computacion",
+  "title": "Maestría en Ingeniería de Sistemas y Computación | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 597322,
+  "discovered_from": "seed",
+  "is_document": false,
+  "depth": 0
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/en/facultad-de-ingenieria-unal",
+  "title": "Facultad de Ingeniería UNAL | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 470273,
+  "discovered_from": "seed",
+  "is_document": false,
+  "depth": 0
+ },
+ {
+  "url": "https://pregrado.unal.edu.co/marconormativo",
+  "title": "Marco Normativo",
+  "content_type": "text/html; charset=utf-8",
+  "size": 39312,
+  "discovered_from": "seed",
+  "is_document": false,
+  "depth": 0
+ },
+ {
+  "url": "https://posgrados.unal.edu.co/normativa",
+  "title": "Normativa - Dirección Nacional de Programas de Posgrado - Universidad Nacional de Colombia",
+  "content_type": "text/html; charset=utf-8",
+  "size": 209301,
+  "discovered_from": "seed",
+  "is_document": false,
+  "depth": 0
+ },
+ {
+  "url": "https://diracad.bogota.unal.edu.co/recursos/pdf/unal-aspirante/PEP/PEP-ing-sistemas-y-computacion.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 5261513,
+  "discovered_from": "seed",
+  "is_document": true,
+  "depth": 0
+ },
+ {
+  "url": "https://ingbiomedica.unal.edu.co/files/Normatividad/ACUERDO_008_2008_CSU_Estatuto_Estudiantil.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 99308,
+  "discovered_from": "seed",
+  "is_document": true,
+  "depth": 0
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/en/departamentos/departamento-ingenieria-sistemas-industrial",
+  "title": "Departamento de Ingeniería de Sistemas e Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 681356,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/facultad-de-ingenieria-unal",
+  "title": "Facultad de Ingeniería UNAL | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 470832,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/decanatura",
+  "title": "Decanatura | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 513680,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/vicedecanatura-academica",
+  "title": "Vicedecanatura Académica | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 437835,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/vicedecanatura-investigacion-extension",
+  "title": "Vicedecanatura de Investigación y Extensión | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 469926,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/departamentos",
+  "title": "Departamentos | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 355149,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/areas-curriculares",
+  "title": "Áreas Curriculares | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 355728,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/secretaria-de-facultad",
+  "title": "Secretaría de Facultad | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 644350,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/unidad-administrativa",
+  "title": "Unidad Administrativa | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 827623,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/proyecto-comunicaciones-digitales",
+  "title": "Proyecto de Comunicaciones Digitales | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 465002,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/preguntas-frecuentes",
+  "title": "Preguntas Frecuentes | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 892478,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/programas-academicos",
+  "title": "Programas Académicos | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 537367,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/laboratorios",
+  "title": "Coordinación de Laboratorios | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 513769,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/es/direccion-de-bienestar",
+  "title": "Dirección de Bienestar | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 396823,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.unal.edu.co/mindlab",
+  "title": "MindLab - <!-- -->Home",
+  "content_type": "text/html",
+  "size": 38697,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/innovate/index.php",
+  "title": "innovaTE - Facultad de Ingeniería - Facultad de Ingeniería - innovaTE",
+  "content_type": "text/html; charset=utf-8",
+  "size": 44903,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/areas-curriculares/area-curricular-ingenieria-sistemas-industrial",
+  "title": "Área curricular de Ingeniería de Sistemas e Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 739380,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/en/areas-curriculares/area-curricular-ingenieria-sistemas-industrial",
+  "title": "Área curricular de Ingeniería de Sistemas e Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 737943,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-de-sistemas-y-computacion",
+  "title": "Ingeniería de Sistemas y Computación | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 597738,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/ingenieria-industrial",
+  "title": "Ingeniería Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 620031,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/especializacion-en-gobierno-electronico",
+  "title": "Especialización en Gobierno Electrónico | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 542457,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/maestria-en-ingenieria-de-sistemas-y-computacion",
+  "title": "Maestría en Ingeniería de Sistemas y Computación | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 597322,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/maestria-en-ingenieria-industrial",
+  "title": "Maestría en Ingeniería Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 561321,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/maestria-en-telecomunicaciones",
+  "title": "Maestría en Telecomunicaciones | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 506285,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/maestria-en-bioinformatica",
+  "title": "Maestría en Bioinformática | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 530812,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/doctorado-en-ingenieria-industria-y-organizaciones",
+  "title": "Doctorado en Ingeniería Industria y Organizaciones | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 509160,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/programas-academicos/doctorado-en-ingenieria-de-sistemas-y-computacion",
+  "title": "Doctorado en Ingeniería de Sistemas y Computación | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 522754,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Evaluacion_Continua_2019_-_Ingenieria_SyC.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1285580,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Evaluacin_Continua_2019_-_Ingeniera_Industrial.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1153247,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Evaluacin_Continua_2018_-_Ingeniera_SyC.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 9886810,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Plan_de_Mejoramiento_2018.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1637810,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Plan_de_Mejoramiento_2017.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 308085,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_de_Autoevaluacion_2017.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 2056362,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Acreditacin_2021_-_Resolucin_No.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 2299708,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Resolucion_de_Acreditacion_2493_-2011.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 84687,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Resolucion_de_Acreditacion_018817.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 228693,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Pares_CNA_2018.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1015949,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/especializacion/gobiernoElectronico/Informe_Evaluacin_Continua_2021.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 457995,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/especializacion/gobiernoElectronico/Informe_Evaluacion_Continua_2020.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1637973,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Evaluacin_Continua_2019_-_Especializacin_Gobierno_Electrnico.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1239459,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Evaluacion_Continua_2017_1.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1683946,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/maestria/ingenieriaSistemasComputacion/Informe_Evaluacin_Continua_2020.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1429133,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/doctorado/doctoradoIngenieriaSistemas/Informe_de_Evaluacin_Continua_2019_-_DISyC.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1963360,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Resolucion_de_Acreditacion_012768-2018.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 814375,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Pares_CNA_2017.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1147415,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/maestria/ingenieriaSistemasComputacion/Informe_de_Evaluacion_Continua_2019_-_Maestria_en_Ingenieria_SyC.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 5885159,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Pares_CNA_2018_Posgrados.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1579035,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Informe_Evaluacion_Continua_2019.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 6056688,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/dependencias/areasCurriculares/areaSistemas/Resolucion_de_Acreditacion_2385-2018.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1713246,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/maestria/telecomunicaciones/Informe_de_Evaluacion_Continua_2019_-_Maestria_Telecomunicaciones.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 2282616,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/maestria/bioinformatica/Informe_de_Evaluacion_Continua_2019_-_Maestria_en_Bioinformatica.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 2018519,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/decanatura",
+  "title": "Decanatura | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 513680,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/vicedecanatura-academica",
+  "title": "Vicedecanatura Académica | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 437835,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/direccion-de-bienestar",
+  "title": "Dirección de Bienestar | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 396823,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/departamentos",
+  "title": "Departamentos | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 355149,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/secretaria-de-facultad",
+  "title": "Secretaría de Facultad | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 644350,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/unidad-administrativa",
+  "title": "Unidad Administrativa | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 827623,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/preguntas-frecuentes",
+  "title": "Preguntas Frecuentes | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 892478,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/proyecto-comunicaciones-digitales",
+  "title": "Proyecto de Comunicaciones Digitales | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 465002,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://qv.ingenieria.bogota.unal.edu.co/guest",
+  "title": "Quanticon Valley",
+  "content_type": "text/html; charset=utf-8",
+  "size": 13242,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/en/programas-academicos/ingenieria-de-sistemas-y-computacion",
+  "title": "Ingeniería de Sistemas y Computación | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 596456,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Malla_Plan_de_estudios_estndar_2023.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 297495,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/wp-content/uploads/2026/08/PEP-ing-sistemas-y-computacion.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 5261513,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/laboratorios/labs-ingenieria-sistemas-industrial",
+  "title": "Laboratorios - Ingeniería de Sistemas e Industrial | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 657638,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Informe_de_Autoevaluacin_2017.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 3564180,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Plan_de_Mejoramiento_2017.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 308085,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Acreditacin_de_Alta_Calidad_2018_-_Resolucin_No_018817_de_2018_MEN.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 228693,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Informe_Evaluacin_Externa_2018.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 1015949,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Informe_Evaluacin_Continua_2018.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 9886810,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/en/programas-academicos/maestria-en-ingenieria-de-sistemas-y-computacion",
+  "title": "Maestría en Ingeniería de Sistemas y Computación | Facultad de Ingeniería",
+  "content_type": "text/html; charset=utf-8",
+  "size": 596060,
+  "discovered_from": "link",
+  "is_document": false,
+  "depth": 1
+ },
+ {
+  "url": "https://ingenieria.bogota.unal.edu.co/images/recursos/posgrado/maestria/ingenieriaSistemasComputacion/Maestria_en_Ing_Sistemas_y_Computacin_2019_VF.pdf",
+  "title": "",
+  "content_type": "application/pdf",
+  "size": 3452852,
+  "discovered_from": "link",
+  "is_document": true,
+  "depth": 1
+ }
+]

@@ -42,8 +42,15 @@ class VectorStore:
             json.dumps(list(self.docs.values()), ensure_ascii=False)
         )
 
-    def add(self, doc_name: str, texts: list[str], vectors: np.ndarray) -> dict:
+    def add(
+        self,
+        doc_name: str,
+        texts: list[str],
+        vectors: np.ndarray,
+        metadata: dict | None = None,
+    ) -> dict:
         doc_id = uuid.uuid4().hex
+        meta = metadata or {}
         with self.lock:
             for text in texts:
                 self.chunks.append(
@@ -52,6 +59,7 @@ class VectorStore:
                         "doc_id": doc_id,
                         "doc_name": doc_name,
                         "text": text,
+                        **meta,
                     }
                 )
             self.vectors = np.vstack([self.vectors, vectors])
@@ -60,6 +68,7 @@ class VectorStore:
                 "name": doc_name,
                 "chunks": len(texts),
                 "added_at": datetime.now(timezone.utc).isoformat(),
+                **meta,
             }
             self.save()
         return self.docs[doc_id]

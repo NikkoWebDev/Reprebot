@@ -18,10 +18,11 @@ let docCount = 0;
 
 /* ---------- util ---------- */
 
-function el(tag, cls, text) {
+function el(tag, cls, text, attrs) {
   const node = document.createElement(tag);
   if (cls) node.className = cls;
   if (text !== undefined) node.textContent = text;
+  if (attrs) for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
   return node;
 }
 
@@ -89,7 +90,10 @@ function renderSources(msg, sources) {
   wrap.append(el("summary", null, `fuentes (${sources.length})`));
   for (const s of sources) {
     const chip = el("div", "source-chip");
-    chip.append(el("span", "src-name", s.doc_name));
+    const name = s.source_url
+      ? el("a", "src-name", s.doc_name, { href: s.source_url, target: "_blank", rel: "noopener" })
+      : el("span", "src-name", s.doc_name);
+    chip.append(name);
     chip.append(el("div", "src-text", s.text));
     chip.append(el("div", "src-score", `relevancia ${s.score.toFixed(3)}`));
     wrap.append(chip);

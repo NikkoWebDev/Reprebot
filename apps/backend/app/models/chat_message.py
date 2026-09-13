@@ -13,6 +13,8 @@ class SourceChunk(BaseModel):
     doc_name: str
     text: str
     score: float
+    source_url: str | None = None
+    doc_type: str | None = None
 
 
 class ChatResponse(BaseModel):
@@ -34,6 +36,8 @@ class DocumentInfo(BaseModel):
     name: str
     chunks: int
     added_at: str
+    source_url: str | None = None
+    doc_type: str | None = None
 
 
 class DocumentListResponse(BaseModel):

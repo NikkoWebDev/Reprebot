@@ -34,6 +34,8 @@ def answer_question(question: str, k: int) -> dict:
             "doc_name": r["doc_name"],
             "text": r["text"],
             "score": r["score"],
+            "source_url": r.get("source_url"),
+            "doc_type": r.get("doc_type"),
         }
         for r in results
     ]
@@ -50,6 +52,8 @@ def search(question: str, k: int) -> list[dict]:
             "doc_name": r["doc_name"],
             "text": r["text"],
             "score": r["score"],
+            "source_url": r.get("source_url"),
+            "doc_type": r.get("doc_type"),
         }
         for r in store.store.search(query_vec, k)
     ]

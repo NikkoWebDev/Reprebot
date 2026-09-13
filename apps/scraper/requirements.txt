@@ -1,0 +1,6 @@
+beautifulsoup4>=4.12
+httpx>=0.28
+pypdf>=5
+fonttools>=4.53
+numpy>=2
+python-dotenv>=1.2
