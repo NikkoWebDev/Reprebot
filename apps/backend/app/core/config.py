@@ -21,11 +21,31 @@ class Settings(BaseSettings):
     chunk_size: int = 1000
     chunk_overlap: int = 150
 
+    # Integración con el foro CEIS (Supabase, service role)
+    supabase_url: str = ""
+    supabase_service_key: str = ""
+    forum_bot_user_id: str = ""
+    forum_api_key: str = ""
+    forum_tag_allowlist: str = "Duda académica,Inscripciones y trámites,Bienestar"
+    rate_limit_per_min: int = 20
+
     @property
     def cors_origins_list(self) -> list[str]:
         if self.cors_origins.strip() == "*":
             return ["*"]
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def forum_tags_list(self) -> list[str]:
+        return [
+            t.strip().lower() for t in self.forum_tag_allowlist.split(",") if t.strip()
+        ]
+
+    @property
+    def forum_enabled(self) -> bool:
+        return bool(
+            self.supabase_url and self.supabase_service_key and self.forum_bot_user_id
+        )
 
 
 @lru_cache

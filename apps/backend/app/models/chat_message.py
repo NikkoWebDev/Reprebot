@@ -42,3 +42,21 @@ class DocumentInfo(BaseModel):
 
 class DocumentListResponse(BaseModel):
     documents: list[DocumentInfo]
+
+
+class ForumAnswerRequest(BaseModel):
+    """Pregunta del foro CEIS. Acepta el payload crudo de un Database Webhook
+    de Supabase (con `record`) o el formulario normalizado."""
+
+    question_id: str | None = None
+    title: str = ""
+    body: str = ""
+    tag: str | None = None
+    record: dict | None = None
+
+
+class ForumAnswerResponse(BaseModel):
+    answer: str
+    sources: list[SourceChunk]
+    posted: bool = False
+    skipped: str | None = None
