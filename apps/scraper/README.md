@@ -39,6 +39,25 @@ python ../scraper/scraper.py --max-pages 100 --max-docs 50 --delay 0.5
 | `--delay` | 1.0 | Segundos entre requests por host |
 | `--limit` | 0 | Máximo de documentos a ingerir (0 = todos) |
 
+## Normativa UNAL
+
+El visor oficial (`legal.unal.edu.co/rlunal/home/doc.jsp`) está detrás de un reCAPTCHA y el visor viejo (`sisjurun/normas/Norma1.jsp`) responde 404. Hay dos vías:
+
+**Cosecha con captcha manual** (`captcha_harvest.py`) — abre un Chromium visible, usted pasa el captcha una vez y el script extrae el texto de cada norma y lo ingiere al store, reemplazando versiones previas. Una vez verificada la sesión, varias normas cargan sin captcha.
+
+```bash
+cd apps/backend
+python ../scraper/captcha_harvest.py              # cosecha + ingiere
+python ../scraper/captcha_harvest.py --harvest-only
+python ../scraper/captcha_harvest.py --only 37192 --timeout 300
+```
+
+Los ids (`d_i`) se validan contra la búsqueda avanzada del propio visor (`avz-ajx.jsp`); algunos publicados en otras páginas están desactualizados (el `35255` de pregrado apunta al Acuerdo 30 de 1990, no al 044 de 2009 — el correcto es `37192`). El script verifica el título con regex y rechaza el documento si no coincide.
+
+**Snapshots del Wayback** (`normativa.py`) — alternativa sin navegador: ingiere desde snapshots archivados cuando no hay sesión. Queda como respaldo; la cosecha oficial es preferible.
+
+Los textos crudos quedan en `normativa_texts/` (gitignored) y el perfil del navegador en `.browser-profile/`.
+
 ## Notas
 
 - La primera corrida descarga el modelo de embeddings (~600MB, cacheado en `~/.cache/fastembed`).

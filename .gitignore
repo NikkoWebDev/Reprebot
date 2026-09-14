@@ -62,6 +62,10 @@ htmlcov/
 apps/backend/data/
 apps/backend/.env
 
+# Scraper: perfil de navegador y textos crudos cosechados
+apps/scraper/.browser-profile/
+apps/scraper/normativa_texts/
+
 # Model caches
 local_cache/
 .cache/
