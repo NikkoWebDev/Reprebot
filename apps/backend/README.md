@@ -113,7 +113,7 @@ curl -X POST http://127.0.0.1:8000/api/forum/answer \
 
 - Responde únicamente si `tag` está en `FORUM_TAG_ALLOWLIST`; si no, devuelve `skipped: "tag"`.
 - Es idempotente: si ya hay una respuesta con `ai_generated = true` para esa pregunta, devuelve `skipped: "already"`.
-- Con Supabase configurado, inserta la fila en `answers` como `FORUM_BOT_USER_ID` con `ai_generated = true`. Devuelve `posted: true`.
+- Con Supabase configurado, inserta la fila en `answers` como `FORUM_BOT_USER_ID` con `ai_generated = true` y las fuentes en `sources` (jsonb). Devuelve `posted: true`.
 - Sin Supabase configurado, devuelve `posted: false` (útil para probar).
 
 Los logs del bot también aceptan el payload crudo de un Database Webhook de Supabase (con `record`).
@@ -121,7 +121,7 @@ Los logs del bot también aceptan el payload crudo de un Database Webhook de Sup
 ## Integración con el foro CEIS
 
 1. En Supabase, Authentication → Users: cree el usuario del bot (`reprebot@unal.edu.co`, auto-confirmado). Copie su uuid a `FORUM_BOT_USER_ID`.
-2. Ejecute `migration_07.sql` en el proyecto del foro (columna `ai_generated` + apodo del bot).
+2. Ejecute `migration_07.sql` en el proyecto del foro (columnas `ai_generated` y `sources`, más el apodo del bot).
 3. En la API, configure `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `FORUM_BOT_USER_ID` y `FORUM_API_KEY`.
 4. Para que responda solo: Database Webhooks → tabla `questions`, evento `INSERT`, URL `https://<api>/api/forum/answer`, header `X-Api-Key`. Sin webhook, el front puede llamar al endpoint tras publicar.
 

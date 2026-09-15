@@ -54,7 +54,9 @@ def has_ai_answer(question_id: str) -> bool:
     return bool(r.json())
 
 
-def insert_answer(question_id: str, body: str) -> dict:
+def insert_answer(
+    question_id: str, body: str, sources: list[dict] | None = None
+) -> dict:
     """Inserta la respuesta de Reprebot como el usuario bot del foro."""
     s = get_settings()
     payload = {
@@ -62,6 +64,7 @@ def insert_answer(question_id: str, body: str) -> dict:
         "author_id": s.forum_bot_user_id,
         "body": body[:MAX_BODY],
         "ai_generated": True,
+        "sources": sources or [],
     }
     r = httpx.post(
         _rest("answers"),

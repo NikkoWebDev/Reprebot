@@ -30,20 +30,6 @@ def _normalizar(req: ForumAnswerRequest) -> ForumAnswerRequest:
     )
 
 
-def _cuerpo_con_fuentes(answer: str, sources: list[dict]) -> str:
-    """Respuesta + fuentes enlazadas, como queda guardada en el foro."""
-    lineas = [answer.strip(), "", "---", "**Fuentes:**"]
-    vistas: set[str] = set()
-    for s in sources:
-        url = s.get("source_url")
-        if url and url not in vistas:
-            vistas.add(url)
-            lineas.append(f"- [{s.get('doc_name') or 'documento'}]({url})")
-    if not vistas:
-        lineas = lineas[:1]
-    return "\n".join(lineas)
-
-
 @router.post(
     "/forum/answer",
     response_model=ForumAnswerResponse,
@@ -76,7 +62,7 @@ def forum_answer(req: ForumAnswerRequest, x_api_key: str | None = Header(None)):
     posted = False
     if s.forum_enabled and req.question_id:
         supabase_admin.insert_answer(
-            req.question_id, _cuerpo_con_fuentes(result["answer"], result["sources"])
+            req.question_id, result["answer"], result["sources"]
         )
         posted = True
 
