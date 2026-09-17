@@ -10,6 +10,7 @@ from app.api.documents import router as documents_router
 from app.api.forum import router as forum_router
 from app.api.health import router as health_router
 from app.api.search import router as search_router
+from app.api.whatsapp import router as whatsapp_router
 from app.core.config import get_settings
 from app.services import store
 
@@ -36,6 +37,7 @@ app.include_router(chat_router, prefix="/api")
 app.include_router(search_router, prefix="/api")
 app.include_router(documents_router, prefix="/api")
 app.include_router(forum_router, prefix="/api")
+app.include_router(whatsapp_router, prefix="/api")
 
 frontend = Path(__file__).resolve().parent.parent.parent / "frontend"
 if frontend.is_dir():

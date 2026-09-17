@@ -34,6 +34,10 @@ class Settings(BaseSettings):
     forum_tag_allowlist: str = "Duda académica,Inscripciones y trámites,Bienestar,Otro"
     rate_limit_per_min: int = 20
 
+    # Puente de WhatsApp (apps/whatsapp)
+    whatsapp_api_key: str = ""
+    whatsapp_max_chars: int = 1800
+
     @property
     def cors_origins_list(self) -> list[str]:
         if self.cors_origins.strip() == "*":

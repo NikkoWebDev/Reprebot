@@ -31,8 +31,9 @@ services:
         value: jina-embeddings-v3
       - key: EMBEDDINGS_DIM
         value: "1024"
+      # 5173 = vite dev, 4173 = vite preview
       - key: CORS_ORIGINS
-        value: https://ceis-unal.com,https://www.ceis-unal.com,http://localhost:5173
+        value: https://ceis-unal.com,https://www.ceis-unal.com,http://localhost:5173,http://localhost:4173,http://127.0.0.1:5173,http://127.0.0.1:4173
       - key: ADMIN_TOKEN
         sync: false
       - key: SUPABASE_URL
@@ -52,3 +53,52 @@ services:
         value: "Duda académica,Inscripciones y trámites,Bienestar,Otro"
       - key: RATE_LIMIT_PER_MIN
         value: "20"
+      # puente de WhatsApp (apps/whatsapp). Vacio = el endpoint no pide header.
+      - key: WHATSAPP_API_KEY
+        sync: false
+      - key: WHATSAPP_MAX_CHARS
+        value: "1800"
+
+  # Puente de WhatsApp (Baileys). Va en un servicio aparte porque necesita un
+  # proceso Node siempre encendido con la sesion del numero; el backend no puede
+  # mantener ese WebSocket.
+  #
+  # OJO con el plan free: si WA_KEEPALIVE=true el servicio nunca se duerme (sin
+  # el keep-alive, Render lo duerme a los 15 min y deja de recibir mensajes), y
+  # los free tienen 750 horas-instancia al mes por workspace. Un mes son ~730 h,
+  # asi que el puente se come casi toda la cuota; si el backend tambien corre,
+  # Render puede suspender los free al final del mes. El disco tambien es
+  # efimero: cada deploy o reinicio pide QR otra vez.
+  - type: web
+    name: reprebot-whatsapp
+    runtime: docker
+    plan: free
+    region: ohio
+    dockerfilePath: ./apps/whatsapp/Dockerfile
+    dockerContext: ./apps/whatsapp
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # los free no pueden recibir trafico de red privada: URL publica
+      - key: BACKEND_URL
+        value: https://reprebot-api.onrender.com
+      - key: WHATSAPP_API_KEY
+        sync: false
+      # un solo grupo: por nombre (case-insensitive) o por JID ...@g.us
+      - key: WA_GROUP_NAME
+        value: ceis
+      - key: WA_GROUP_JID
+        sync: false
+      - key: WA_TRIGGERS
+        value: "!repre,/repre"
+      - key: WA_COOLDOWN_SECONDS
+        value: "20"
+      - key: WA_MAX_PER_MINUTE
+        value: "6"
+      - key: WA_MAX_CHARS
+        value: "1800"
+      - key: WA_KEEPALIVE
+        value: "true"
+      # sin esto /qr devuelve 403: el QR empareja la sesion, no puede ser publico
+      - key: WA_QR_TOKEN
+        sync: false

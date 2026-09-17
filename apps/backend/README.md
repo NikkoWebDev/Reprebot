@@ -62,6 +62,7 @@ Ejecute los comandos desde `apps/backend/`. La interfaz de prueba queda en http:
 | `POST` | `/api/chat/stream` | La misma respuesta en SSE (texto a texto) |
 | `POST` | `/api/search` | Recupera fuentes sin llamar al LLM |
 | `POST` | `/api/forum/answer` | Responde una pregunta del foro y la publica como el bot |
+| `POST` | `/api/whatsapp/answer` | Responde una pregunta etiquetada en WhatsApp |
 | `POST` | `/api/documents` | Ingresa un PDF, TXT o MD mediante `multipart/form-data` |
 | `GET` | `/api/documents` | Lista documentos indexados |
 | `DELETE` | `/api/documents/{id}` | Borra un documento y sus chunks |
@@ -117,6 +118,19 @@ curl -X POST http://127.0.0.1:8000/api/forum/answer \
 - Sin Supabase configurado, devuelve `posted: false` (útil para probar).
 
 Los logs del bot también aceptan el payload crudo de un Database Webhook de Supabase (con `record`).
+
+### Respuesta de WhatsApp
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/whatsapp/answer \
+  -H 'Content-Type: application/json' \
+  -H 'X-Api-Key: <WHATSAPP_API_KEY>' \
+  -d '{"text":"¿Qué dice el Acuerdo 044 de 2009 sobre bienestar?","sender_name":"Niko"}'
+```
+
+- `text` vacío devuelve 422; la respuesta viene en texto plano listo para enviar.
+- No tiene rate limit por IP: el puente `apps/whatsapp` ya throttlea por usuario, y todo el grupo sale por la misma IP, así que el limiter por IP mezclaría a todos.
+- Si `WHATSAPP_API_KEY` está vacío, no pide header (igual que el foro).
 
 ## Integración con el foro CEIS
 

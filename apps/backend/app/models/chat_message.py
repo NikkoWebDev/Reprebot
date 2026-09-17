@@ -60,3 +60,14 @@ class ForumAnswerResponse(BaseModel):
     sources: list[SourceChunk]
     posted: bool = False
     skipped: str | None = None
+
+
+class WhatsAppAnswerRequest(BaseModel):
+    text: str = ""
+    sender_name: str | None = None
+
+
+class WhatsAppAnswerResponse(BaseModel):
+    answer: str
+    sources: list[SourceChunk]
+    skipped: str | None = None

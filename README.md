@@ -2,10 +2,11 @@
 
 Este repositorio almacena el proyecto de Reprebot de Sistemas (Sede Bogotá), mantenido por el Consejo de Estudiantes de Sistemas (CEIS).
 
-El proyecto es un monorepo con dos aplicaciones:
+El proyecto es un monorepo con tres aplicaciones:
 
 - `apps/backend` — API construida con FastAPI (Python)
 - `apps/frontend` — interfaz de prueba en HTML, CSS y JavaScript vanilla
+- `apps/whatsapp` — puente de WhatsApp (Node + Baileys) que responde en un grupo
 
 Cada aplicación tiene su propio README con la estructura y las instrucciones de instalación. Léelo antes de hacer cambios.
 

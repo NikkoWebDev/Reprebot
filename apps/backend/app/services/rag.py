@@ -1,5 +1,7 @@
+import re
 from collections.abc import Iterator
 
+from app.core.config import get_settings
 from app.services import ai_client, embeddings, store
 
 REPO_URL = "https://github.com/Ansukic/Reprebot"
@@ -34,6 +36,17 @@ Reglas:
 
 {ATTRIBUTION}"""
 
+WHATSAPP_PROMPT = f"""Eres Reprebot y respondes en un chat de WhatsApp del Consejo de Estudiantes de Ingeniería de Sistemas (CEIS) de la Universidad Nacional de Colombia.
+
+Reglas:
+{_RULES}
+- Responde en español con tono cercano de chat, como un compañero más.
+- Máximo 2 o 3 frases cortas. Nada de párrafos largos.
+- Arranca respondiendo directo, sin saludar ni repetir la pregunta.
+- Cita el documento entre paréntesis, por ejemplo: (Acuerdo 044 de 2009).
+
+{ATTRIBUTION}"""
+
 _VACIO = "Aún no tengo conocimiento cargado. Sube documentos primero desde la pestaña de documentos."
 
 
@@ -60,6 +73,29 @@ def _sources(results: list[dict]) -> list[dict]:
 def _retrieve(question: str, k: int) -> list[dict]:
     query_vec = embeddings.embed([question], task="retrieval.query")[0]
     return store.store.search(query_vec, k)
+
+
+def _para_chat(texto: str) -> str:
+    """Adapta el markdown del LLM al formato de WhatsApp y lo recorta."""
+    t = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1 (\2)", texto)
+    t = re.sub(r"\*\*(.+?)\*\*", r"*\1*", t)
+    t = re.sub(r"^\s*#{1,6}\s*(.+?)\s*$", r"*\1*", t, flags=re.MULTILINE)
+    t = re.sub(r"^\s*[-*]\s+", "• ", t, flags=re.MULTILINE)
+    t = re.sub(r"[ \t]+$", "", t, flags=re.MULTILINE)
+    t = re.sub(r"\n{3,}", "\n\n", t).strip()
+
+    limite = get_settings().whatsapp_max_chars
+    if len(t) <= limite:
+        return t
+
+    corte = max(
+        t.rfind(". ", 0, limite) + 1,
+        t.rfind(".\n", 0, limite) + 1,
+        t.rfind("\n\n", 0, limite),
+    )
+    if corte <= 0:
+        return t[:limite].rstrip() + "…"
+    return t[:corte].rstrip()
 
 
 def answer_question(question: str, k: int) -> dict:
@@ -92,6 +128,29 @@ def answer_forum(title: str, body: str, k: int | None = None) -> dict:
         },
     ]
     return {"answer": ai_client.chat(messages), "sources": _sources(results)}
+
+
+def answer_whatsapp(
+    text: str, sender_name: str | None = None, k: int | None = None
+) -> dict:
+    """Respuesta corta para WhatsApp. La adapta al formato del chat."""
+    if not store.store.chunks:
+        return {"answer": _VACIO, "sources": []}
+
+    results = _retrieve(text, k or 6)
+    quien = f" ({sender_name})" if sender_name else ""
+    messages = [
+        {"role": "system", "content": WHATSAPP_PROMPT},
+        {
+            "role": "user",
+            "content": (
+                f"Contexto:\n\n{_context(results)}\n\n"
+                f"Pregunta de WhatsApp{quien}: {text}"
+            ),
+        },
+    ]
+    answer = _para_chat(ai_client.chat(messages))
+    return {"answer": answer, "sources": _sources(results)}
 
 
 def answer_stream(question: str, k: int) -> Iterator[dict]:
