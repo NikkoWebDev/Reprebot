@@ -58,7 +58,7 @@ def _sources(results: list[dict]) -> list[dict]:
 
 
 def _retrieve(question: str, k: int) -> list[dict]:
-    query_vec = embeddings.embed([question])[0]
+    query_vec = embeddings.embed([question], task="retrieval.query")[0]
     return store.store.search(query_vec, k)
 
 

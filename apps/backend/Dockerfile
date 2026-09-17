@@ -1,6 +1,6 @@
-# Reprebot API — FastAPI + RAG (Groq + fastembed).
-# El modelo de embeddings y el store se hornean en la imagen para que el
-# arranque en Render no dependa de descargas en el primer request.
+# Reprebot API — FastAPI + RAG (Groq).
+# Con EMBEDDINGS_API_URL los embeddings van por API remota y el proceso queda
+# en ~150 MB; sin ella se usa fastembed local (~1 GB), que no cabe en Render free.
 FROM python:3.13-slim
 
 ENV PYTHONUNBUFFERED=1 \
@@ -18,14 +18,19 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
-# Hornea el modelo (~600MB): cold start sin descargas
-RUN python -c "from fastembed import TextEmbedding; TextEmbedding('jinaai/jina-embeddings-v2-base-es')"
+# Hornea el modelo local (~600MB) solo si se va a usar fastembed.
+# Con EMBEDDINGS_API_URL configurada no hace falta: ahorra build y RAM.
+ARG BAKE_EMBEDDINGS=0
+RUN if [ "$BAKE_EMBEDDINGS" = "1" ]; then \
+      python -c "from fastembed import TextEmbedding; TextEmbedding('jinaai/jina-embeddings-v2-base-es')"; \
+    fi
 
 COPY app/ ./app/
 COPY data/ ./data/
 
 # Usuario sin privilegios (el store se escribe solo al subir documentos)
-RUN useradd --create-home --uid 10001 appuser \
+RUN mkdir -p /opt/fastembed \
+    && useradd --create-home --uid 10001 appuser \
     && chown -R appuser:appuser /app /opt/fastembed
 USER appuser
 

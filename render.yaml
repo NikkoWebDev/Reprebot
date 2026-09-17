@@ -1,21 +1,16 @@
 # Blueprint de Render para la API de Reprebot (fork CEIS).
 #
-# MEDIDO (no estimado): con el modelo jina-v2-base-es el proceso sube a
-# ~1100 MB en la primera consulta (fastembed + onnxruntime preasignan en el
-# primer embed). Con el modelo multilingue mas pequeno que soporta fastembed
-# (paraphrase-multilingual-MiniLM-L12-v2, 384 dims) tambien sube a ~717 MB.
-# El plan free (512 MB) hace OOM en la primera pregunta; limitar hilos
-# (OMP_NUM_THREADS) no cambia nada.
+# MEDIDO: con embeddings locales (fastembed + onnxruntime) el proceso sube a
+# ~1100 MB en la primera consulta, y a ~717 MB incluso con el modelo mas chico
+# que soporta fastembed. El plan free (512 MB) haria OOM en la primera pregunta.
 #
-# El plan que funciona tal cual es "standard" (2 GB). Para usar el free hay
-# que sacar los embeddings del contenedor: moverlos a una API remota
-# (Jina AI / OpenAI / Cohere) y reindexar. Con eso el proceso baja a ~150 MB.
+# Por eso los embeddings van por API remota (Jina AI, plan free: 100 RPM /
+# 100K TPM). Asi fastembed no se carga y el proceso queda en ~150 MB, que cabe
+# en free. Requiere EMBEDDINGS_API_KEY y reindexar con ese modelo.
 services:
   - type: web
     name: reprebot-api
     runtime: docker
-    # free = 512 MB: OOM en la primera consulta. Cambie a standard o mueva
-    # los embeddings a una API remota antes de usar free.
     plan: free
     region: ohio
     dockerfilePath: ./apps/backend/Dockerfile
@@ -27,8 +22,15 @@ services:
         sync: false
       - key: GROQ_CHAT_MODEL
         value: openai/gpt-oss-120b
+      # embeddings por API remota: sin esto el free hace OOM (ver arriba)
+      - key: EMBEDDINGS_API_URL
+        value: https://api.jina.ai/v1/embeddings
+      - key: EMBEDDINGS_API_KEY
+        sync: false
       - key: EMBEDDINGS_MODEL
-        value: jinaai/jina-embeddings-v2-base-es
+        value: jina-embeddings-v3
+      - key: EMBEDDINGS_DIM
+        value: "1024"
       - key: CORS_ORIGINS
         value: https://ceis-unal.com,https://www.ceis-unal.com,http://localhost:5173
       - key: ADMIN_TOKEN

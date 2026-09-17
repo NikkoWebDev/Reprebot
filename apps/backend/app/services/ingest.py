@@ -39,5 +39,5 @@ def ingest_file(filename: str, content: bytes) -> dict:
     if not chunks:
         raise HTTPException(422, "el documento no produjo contenido indexable")
 
-    vectors = embeddings.embed(chunks)
+    vectors = embeddings.embed(chunks, task="retrieval.passage")
     return store.store.add(filename, chunks, vectors)

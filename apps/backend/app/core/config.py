@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     embeddings_model: str = "jinaai/jina-embeddings-v2-base-es"
     embeddings_dim: int = 768
 
+    # Embeddings por API remota (OpenAI/Jina). Si estan seteadas, no se carga
+    # fastembed en memoria (~1 GB con un BERT-base) y el proceso queda en ~150 MB.
+    embeddings_api_url: str = ""
+    embeddings_api_key: str = ""
+
     data_dir: str = "data"
     cors_origins: str = "*"
     admin_token: str = ""
