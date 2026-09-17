@@ -42,8 +42,11 @@ services:
       # perfil 'Reprebot' ya creado en Supabase (b6af4105-...)
       - key: FORUM_BOT_USER_ID
         value: b6af4105-c044-4ee9-85ff-aee253fca85c
+      # vacia a proposito: asi /api/forum/answer no exige header X-Api-Key y el
+      # boton "Pedir respuesta a Reprebot" del foro funciona desde el navegador.
+      # Si le pone valor, hay que usar un Database Webhook y quitar el boton.
       - key: FORUM_API_KEY
-        sync: false
+        value: ""
       # 'Otro' incluido: es el tag por defecto y sin el el bot omite casi todo
       - key: FORUM_TAG_ALLOWLIST
         value: "Duda académica,Inscripciones y trámites,Bienestar,Otro"

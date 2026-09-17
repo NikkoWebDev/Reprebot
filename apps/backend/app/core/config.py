@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     supabase_service_key: str = ""
     forum_bot_user_id: str = ""
     forum_api_key: str = ""
-    forum_tag_allowlist: str = "Duda académica,Inscripciones y trámites,Bienestar"
+    forum_tag_allowlist: str = "Duda académica,Inscripciones y trámites,Bienestar,Otro"
     rate_limit_per_min: int = 20
 
     @property

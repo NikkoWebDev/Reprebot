@@ -47,25 +47,37 @@ def _embed_api(texts: list[str], task: str | None) -> np.ndarray:
             "model": s.embeddings_model,
             "input": lote,
             "normalized": True,
+            # el router de preguntas arma texto libre; jina rechaza con 422 si pasa
+            # del contexto del modelo, asi que se trunca en vez de fallar
+            "truncate": True,
         }
         if task:
             body["task"] = task
 
         r = None
-        for intento in range(4):
-            r = httpx.post(
-                s.embeddings_api_url,
-                json=body,
-                headers={"Authorization": f"Bearer {s.embeddings_api_key}"},
-                timeout=120,
-            )
-            if r.status_code == 429:  # rate limit: backoff exponencial
+        for intento in range(5):
+            try:
+                r = httpx.post(
+                    s.embeddings_api_url,
+                    json=body,
+                    headers={"Authorization": f"Bearer {s.embeddings_api_key}"},
+                    timeout=120,
+                )
+            except httpx.TransportError:
+                # DNS/red transitoria: no hay respuesta, se reintenta
                 time.sleep(2**intento)
                 continue
-            r.raise_for_status()
+            if r.status_code == 429 or r.status_code >= 500:  # rate limit / error del server
+                time.sleep(2**intento)
+                continue
             break
         else:
-            r.raise_for_status()
+            if r is None:
+                raise RuntimeError("no se pudo contactar la API de embeddings (red)")
+
+        if r.status_code >= 400:
+            # incluye el motivo: la API devuelve detalle util en el cuerpo
+            raise RuntimeError(f"embeddings API {r.status_code}: {r.text[:300]}")
 
         datos = sorted(r.json()["data"], key=lambda d: d["index"])
         salida.extend(d["embedding"] for d in datos)
