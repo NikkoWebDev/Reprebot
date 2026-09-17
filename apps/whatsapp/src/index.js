@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import 'dotenv/config';
 import pino from 'pino';
 import qrcode from 'qrcode-terminal';
+import QRCode from 'qrcode';
 import makeWASocket, {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
@@ -80,14 +81,41 @@ const server = http.createServer((req, res) => {
       res.end('token invalido');
       return;
     }
-    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-    res.end(estado.qr || 'sin qr');
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    if (!estado.qr) {
+      res.end(paginaQr(null));
+      return;
+    }
+    QRCode.toDataURL(estado.qr, { margin: 1, width: 280 })
+      .then((img) => res.end(paginaQr(img)))
+      .catch((e) => {
+        log.error(`qr a imagen fallo: ${e.message}`);
+        res.end('error generando el qr');
+      });
     return;
   }
 
   res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
   res.end('not found');
 });
+
+// Pagina con el QR como imagen. La meta-refresh mantiene el QR fresco si
+// Baileys emite uno nuevo mientras la dejas abierta.
+function paginaQr(img) {
+  const cuerpo = img
+    ? `<img src="${img}" alt="QR de Reprebot" style="background:#fff;border-radius:12px;padding:14px">`
+    : '<p style="color:#8a8e96">Sin QR todavia. Esta pagina recarga sola.</p>';
+  return `<!doctype html>
+<html lang="es"><meta charset="utf-8">
+<meta http-equiv="refresh" content="10">
+<title>QR Reprebot</title>
+<body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#111318;font-family:system-ui,-apple-system,sans-serif;color:#e8e8ea">
+  <div style="text-align:center">
+    ${cuerpo}
+    <p style="margin-top:18px;color:#8a8e96;font-size:14px">WhatsApp &gt; Dispositivos vinculados &gt; Vincular dispositivo</p>
+  </div>
+</body></html>`;
+}
 
 server.listen(config.port, () => {
   log.warn(`Escuchando en http://0.0.0.0:${config.port} (/health, /qr)`);
