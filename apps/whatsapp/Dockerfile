@@ -1,13 +1,7 @@
+# libsignal viene como dep git+https en Baileys y npm la reescribe a ssh://,
+# que en un build sin llaves falla. El override en package.json la baja del
+# registry npm (misma version 6.0.0), asi el install no toca git.
 FROM node:20-slim
-
-# libsignal (dependencia de Baileys) se baja por git+https y npm lo reescribe a
-# ssh (por eso sin credenciales el build falla con "ssh: not found"). Con
-# insteadOf se fuerza https anonimo, que sirve para repos publicos.
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends git \
-    && git config --global url."https://github.com/".insteadOf "ssh://git@github.com/" \
-    && git config --global url."https://github.com/".insteadOf "git@github.com:" \
-    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
