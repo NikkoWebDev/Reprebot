@@ -1,14 +1,22 @@
 # Blueprint de Render para la API de Reprebot (fork CEIS).
 #
-# OJO con el plan: fastembed + onnxruntime con un modelo BERT-base piden
-# ~1 GB de RAM. El plan "starter" (512 MB) probablemente hace OOM.
-# Alternativas: bajar a un modelo de embeddings mas pequeno o usar
-# un VPS / Railway con 1 GB.
+# MEDIDO (no estimado): con el modelo jina-v2-base-es el proceso sube a
+# ~1100 MB en la primera consulta (fastembed + onnxruntime preasignan en el
+# primer embed). Con el modelo multilingue mas pequeno que soporta fastembed
+# (paraphrase-multilingual-MiniLM-L12-v2, 384 dims) tambien sube a ~717 MB.
+# El plan free (512 MB) hace OOM en la primera pregunta; limitar hilos
+# (OMP_NUM_THREADS) no cambia nada.
+#
+# El plan que funciona tal cual es "standard" (2 GB). Para usar el free hay
+# que sacar los embeddings del contenedor: moverlos a una API remota
+# (Jina AI / OpenAI / Cohere) y reindexar. Con eso el proceso baja a ~150 MB.
 services:
   - type: web
     name: reprebot-api
     runtime: docker
-    plan: standard
+    # free = 512 MB: OOM en la primera consulta. Cambie a standard o mueva
+    # los embeddings a una API remota antes de usar free.
+    plan: free
     region: ohio
     dockerfilePath: ./apps/backend/Dockerfile
     dockerContext: ./apps/backend
@@ -26,14 +34,16 @@ services:
       - key: ADMIN_TOKEN
         sync: false
       - key: SUPABASE_URL
-        sync: false
+        value: https://mamirtgawcxjblmwaock.supabase.co
       - key: SUPABASE_SERVICE_KEY
         sync: false
+      # perfil 'Reprebot' ya creado en Supabase (b6af4105-...)
       - key: FORUM_BOT_USER_ID
-        sync: false
+        value: b6af4105-c044-4ee9-85ff-aee253fca85c
       - key: FORUM_API_KEY
         sync: false
+      # 'Otro' incluido: es el tag por defecto y sin el el bot omite casi todo
       - key: FORUM_TAG_ALLOWLIST
-        value: "Duda académica,Inscripciones y trámites,Bienestar"
+        value: "Duda académica,Inscripciones y trámites,Bienestar,Otro"
       - key: RATE_LIMIT_PER_MIN
         value: "20"
