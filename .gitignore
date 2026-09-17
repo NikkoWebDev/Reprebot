@@ -58,9 +58,13 @@ htmlcov/
 *.sqlite3
 *.db
 
-# Reprebot: datos del store vectorial y secrets
-apps/backend/data/
+# Reprebot: secrets
 apps/backend/.env
+
+# OJO: apps/backend/data/ SI se versiona.
+# El Dockerfile hace `COPY data/ ./data/` y el indice necesita estar en la
+# imagen; si se ignora, el build de Render falla. Son ~16 MB.
+# Si vuelve a ignorarlo, ajuste el Dockerfile para no copiarlo.
 
 # Scraper: perfil de navegador y textos crudos cosechados
 apps/scraper/.browser-profile/

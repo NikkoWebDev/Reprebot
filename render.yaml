@@ -22,7 +22,7 @@ services:
       - key: EMBEDDINGS_MODEL
         value: jinaai/jina-embeddings-v2-base-es
       - key: CORS_ORIGINS
-        value: https://ceis-unal.vercel.app,http://localhost:5173
+        value: https://ceis-unal.com,https://www.ceis-unal.com,http://localhost:5173
       - key: ADMIN_TOKEN
         sync: false
       - key: SUPABASE_URL
