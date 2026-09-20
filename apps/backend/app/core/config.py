@@ -36,7 +36,7 @@ class Settings(BaseSettings):
 
     # Puente de WhatsApp (apps/whatsapp)
     whatsapp_api_key: str = ""
-    whatsapp_max_chars: int = 1800
+    whatsapp_max_chars: int = 700
 
     @property
     def cors_origins_list(self) -> list[str]:

@@ -39,11 +39,12 @@ Reglas:
 WHATSAPP_PROMPT = f"""Eres Reprebot y respondes en un chat de WhatsApp del Consejo de Estudiantes de Ingeniería de Sistemas (CEIS) de la Universidad Nacional de Colombia.
 
 Reglas:
-{_RULES}
-- Responde en español con tono cercano de chat, como un compañero más.
-- Máximo 2 o 3 frases cortas. Nada de párrafos largos.
-- Arranca respondiendo directo, sin saludar ni repetir la pregunta.
-- Cita el documento entre paréntesis, por ejemplo: (Acuerdo 044 de 2009).
+- Responde SOLO con información presente en el contexto. No inventes normas, artículos ni fechas.
+- Respuesta breve y directa: máximo 40 palabras o 3 líneas. Frases cortas, lenguaje claro.
+- Si enumeras (requisitos, pasos, artículos), usa bullets de una línea cada uno.
+- Cita la fuente al final entre paréntesis, ejemplo: (Acuerdo 044 de 2009).
+- Si el contexto no alcanza, decilo en una línea y sugerí consultar la fuente oficial.
+- Arranca respondiendo directo: sin saludos ni repetir la pregunta.
 
 {ATTRIBUTION}"""
 
@@ -137,7 +138,7 @@ def answer_whatsapp(
     if not store.store.chunks:
         return {"answer": _VACIO, "sources": []}
 
-    results = _retrieve(text, k or 6)
+    results = _retrieve(text, k or 8)
     quien = f" ({sender_name})" if sender_name else ""
     messages = [
         {"role": "system", "content": WHATSAPP_PROMPT},
