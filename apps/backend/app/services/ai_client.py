@@ -21,8 +21,11 @@ def _headers() -> dict[str, str]:
 
 
 def chat(
-    messages: list[dict], model: str | None = None, temperature: float = 0.2
-) -> str:
+    messages: list[dict],
+    model: str | None = None,
+    temperature: float = 0.2,
+    with_usage: bool = False,
+) -> str | tuple[str, dict]:
     s = get_settings()
     try:
         r = httpx.post(
@@ -35,7 +38,11 @@ def chat(
         raise HTTPException(502, f"no hubo conexión con groq: {e}") from e
     if r.status_code != 200:
         raise HTTPException(502, f"groq respondió {r.status_code}: {r.text[:300]}")
-    return r.json()["choices"][0]["message"]["content"]
+    data = r.json()
+    content = data["choices"][0]["message"]["content"]
+    if with_usage:
+        return content, data.get("usage", {})
+    return content
 
 
 def stream_chat(

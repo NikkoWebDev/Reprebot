@@ -63,6 +63,7 @@ Ejecute los comandos desde `apps/backend/`. La interfaz de prueba queda en http:
 | `POST` | `/api/search` | Recupera fuentes sin llamar al LLM |
 | `POST` | `/api/forum/answer` | Responde una pregunta del foro y la publica como el bot |
 | `POST` | `/api/whatsapp/answer` | Responde una pregunta etiquetada en WhatsApp |
+| `POST` | `/v1/chat/completions` | Chat con historial para el front kalaai (multi-turno + fuentes + usage) |
 | `POST` | `/api/documents` | Ingresa un PDF, TXT o MD mediante `multipart/form-data` |
 | `GET` | `/api/documents` | Lista documentos indexados |
 | `DELETE` | `/api/documents/{id}` | Borra un documento y sus chunks |
@@ -131,6 +132,42 @@ curl -X POST http://127.0.0.1:8000/api/whatsapp/answer \
 - `text` vacío devuelve 422; la respuesta viene en texto plano listo para enviar.
 - No tiene rate limit por IP: el puente `apps/whatsapp` ya throttlea por usuario, y todo el grupo sale por la misma IP, así que el limiter por IP mezclaría a todos.
 - Si `WHATSAPP_API_KEY` está vacío, no pide header (igual que el foro).
+
+### Chat con historial (kalaai)
+
+`POST /v1/chat/completions` — para el chat web con historial (formato propio, no OpenAI estricto). El RAG recupera contra el último mensaje del usuario, anclado con la respuesta anterior del asistente para resolver follow-ups ("¿y con nivelación?").
+
+```bash
+curl -X POST http://127.0.0.1:8000/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -H 'X-Api-Key: <WHATSAPP_API_KEY>' \
+  -d '{
+    "messages": [
+      {"role": "user", "content": "¿cuántos créditos tiene el plan estándar 2023?"},
+      {"role": "assistant", "content": "167 créditos (Malla Curricular — Plan Estándar 2023)."},
+      {"role": "user", "content": "¿y con nivelación?"}
+    ],
+    "k": 8,
+    "stream": false
+  }'
+```
+
+Campos del request:
+
+| Campo | Valor | Nota |
+| --- | --- | --- |
+| `messages` | `[{role, content}]` | Historial completo; `role` ∈ `system`/`user`/`assistant`. El último `user` es la pregunta. `system` es opcional (si viene, reemplaza la persona por defecto). |
+| `k` | `1..20` | Chunks a recuperar (default `TOP_K`). |
+| `stream` | `bool` | `true` responde en SSE con el mismo protocolo de `/api/chat/stream`. |
+| `max_history` | `1..50` | Máximo de mensajes históricos que recibe el LLM (default `CHAT_MAX_HISTORY`, 10). |
+
+Respuesta (sin `stream`): `{"answer", "sources": [SourceChunk…], "usage": {prompt_tokens, completion_tokens, total_tokens, …}}`.
+
+Con `stream: true` emite eventos SSE:
+`data: {"type":"sources","sources":[…]}` → `data: {"type":"delta","text":"…"}` (repetidos) → `data: {"type":"done"}`.
+
+- Requiere `X-Api-Key` solo si `WHATSAPP_API_KEY` tiene valor (igual que WhatsApp/foro); es la misma key del puente, así el chat web y el puente comparten llave.
+- `messages` sin ningún `role: "user"` devuelve 422.
 
 ## Integración con el foro CEIS
 

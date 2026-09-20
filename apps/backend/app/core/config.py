@@ -34,6 +34,9 @@ class Settings(BaseSettings):
     forum_tag_allowlist: str = "Duda académica,Inscripciones y trámites,Bienestar,Otro"
     rate_limit_per_min: int = 20
 
+    # Chat con historial (endpoint /v1/chat/completions)
+    chat_max_history: int = 10
+
     # Puente de WhatsApp (apps/whatsapp)
     whatsapp_api_key: str = ""
     whatsapp_max_chars: int = 700

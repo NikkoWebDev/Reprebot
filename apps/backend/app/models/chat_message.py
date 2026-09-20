@@ -1,11 +1,8 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 from app.core.config import get_settings
-
-
-class ChatRequest(BaseModel):
-    question: str = Field(min_length=1)
-    k: int = Field(default_factory=lambda: get_settings().top_k, ge=1, le=20)
 
 
 class SourceChunk(BaseModel):
@@ -15,6 +12,31 @@ class SourceChunk(BaseModel):
     score: float
     source_url: str | None = None
     doc_type: str | None = None
+
+
+class ChatMessage(BaseModel):
+    role: Literal["system", "user", "assistant"]
+    content: str
+
+
+class KalaaiChatRequest(BaseModel):
+    """Chat con historial para /v1/chat/completions (formato kalaai)."""
+
+    messages: list[ChatMessage] = Field(min_length=1)
+    k: int = Field(default_factory=lambda: get_settings().top_k, ge=1, le=20)
+    stream: bool = False
+    max_history: int | None = Field(default=None, ge=1, le=50)
+
+
+class KalaaiChatResponse(BaseModel):
+    answer: str
+    sources: list[SourceChunk]
+    usage: dict = Field(default_factory=dict)
+
+
+class ChatRequest(BaseModel):
+    question: str = Field(min_length=1)
+    k: int = Field(default_factory=lambda: get_settings().top_k, ge=1, le=20)
 
 
 class ChatResponse(BaseModel):

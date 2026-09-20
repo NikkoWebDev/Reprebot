@@ -1,6 +1,8 @@
 import re
 from collections.abc import Iterator
 
+from fastapi import HTTPException
+
 from app.core.config import get_settings
 from app.services import ai_client, embeddings, store
 
@@ -173,6 +175,114 @@ def answer_stream(question: str, k: int) -> Iterator[dict]:
         },
     ]
     for delta in ai_client.stream_chat(messages):
+        yield {"type": "delta", "text": delta}
+    yield {"type": "done"}
+
+
+def _cliente_chat(messages: list[dict], max_history: int) -> tuple[str, str, str, list[dict]]:
+    """Separa (sistema, pregunta, pregunta_rag, historial) del payload.
+
+    La pregunta es el último mensaje ``user`` (la que ve el LLM); el RAG
+    recupera contra ``pregunta_rag``, que ancla los follow-ups ("¿y con
+    nivelación?") con la respuesta anterior del asistente. El historial es
+    todo lo anterior, en orden y acotado a los últimos ``max_history``
+    mensajes. Si el cliente manda su propio ``system``, se usa.
+    """
+    limpios: list[dict] = []
+    sistema = ""
+    pregunta = ""
+    idx_usuario = -1
+    for m in messages:
+        role = m.get("role")
+        content = (m.get("content") or "").strip()
+        if not content or role not in ("system", "user", "assistant"):
+            continue
+        limpios.append({"role": role, "content": content})
+        if role == "system":
+            sistema = content
+        if role == "user":
+            idx_usuario = len(limpios) - 1
+            pregunta = content
+    if idx_usuario == -1:
+        return sistema, "", "", []
+    historial = limpios[:idx_usuario]
+    prev_asistente = next(
+        (m["content"] for m in reversed(historial) if m["role"] == "assistant"), ""
+    )
+    pregunta_rag = pregunta
+    if prev_asistente:
+        pregunta_rag = f"{prev_asistente[:400].rstrip()}. {pregunta}"
+    return sistema, pregunta, pregunta_rag, historial[-max_history:]
+
+
+def answer_chat(
+    messages: list[dict], k: int | None = None, max_history: int | None = None
+) -> dict:
+    """Chat con historial para /v1/chat/completions (formato kalaai).
+
+    Recupera del RAG contra el último mensaje del usuario y le pasa al LLM el
+    historial previo (acotado) para responder follow-ups. Devuelve answer,
+    sources y usage.
+    """
+    mh = min(max_history or get_settings().chat_max_history, 50)
+    sistema, pregunta, pregunta_rag, historial = _cliente_chat(messages, mh)
+    if not pregunta:
+        raise HTTPException(422, "falta un mensaje de usuario en messages")
+
+    system = {"role": "system", "content": sistema or CHAT_PROMPT}
+    if not store.store.chunks:
+        resposta = ai_client.chat(
+            [system, *historial, {"role": "user", "content": pregunta}],
+            with_usage=True,
+        )
+        return {"answer": resposta[0], "sources": [], "usage": resposta[1]}
+
+    results = _retrieve(pregunta_rag, k or 8)
+    respuesta, usage = ai_client.chat(
+        [
+            system,
+            *historial,
+            {
+                "role": "user",
+                "content": f"Contexto:\n\n{_context(results)}\n\nPregunta: {pregunta}",
+            },
+        ],
+        with_usage=True,
+    )
+    return {"answer": respuesta, "sources": _sources(results), "usage": usage}
+
+
+def answer_chat_stream(
+    messages: list[dict], k: int | None = None, max_history: int | None = None
+) -> Iterator[dict]:
+    """Versión SSE de answer_chat (mismo protocolo que /api/chat/stream)."""
+    mh = min(max_history or get_settings().chat_max_history, 50)
+    sistema, pregunta, pregunta_rag, historial = _cliente_chat(messages, mh)
+    if not pregunta:
+        raise HTTPException(422, "falta un mensaje de usuario en messages")
+
+    system = {"role": "system", "content": sistema or CHAT_PROMPT}
+    if not store.store.chunks:
+        yield {"type": "sources", "sources": []}
+        for delta in ai_client.stream_chat(
+            [system, *historial, {"role": "user", "content": pregunta}]
+        ):
+            yield {"type": "delta", "text": delta}
+        yield {"type": "done"}
+        return
+
+    results = _retrieve(pregunta_rag, k or 8)
+    yield {"type": "sources", "sources": _sources(results)}
+    for delta in ai_client.stream_chat(
+        [
+            system,
+            *historial,
+            {
+                "role": "user",
+                "content": f"Contexto:\n\n{_context(results)}\n\nPregunta: {pregunta}",
+            },
+        ]
+    ):
         yield {"type": "delta", "text": delta}
     yield {"type": "done"}
 
