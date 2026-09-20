@@ -1,0 +1,153 @@
+Compendio Normativo y Guía Integral para Reprebot (UNAL - Sede Bogotá)
+
+Facultad de Ingeniería y Programa de Ingeniería de Sistemas y Computación
+
+1. Estamentos Universitarios y Conducto Regular
+
+En la Universidad Nacional de Colombia (Sede Bogotá), las decisiones que afectan a los estudiantes siguen una estructura jerárquica de estamentos:
+
+[Consejo Superior Universitario (CSU)] -&gt; Máxima autoridad de gobierno y estatutos
+
+    |
+
+[Consejo Académico (CA)] -&gt; Asuntos curriculares nacionales y traslados
+
+    |
+
+[Consejo de Sede Bogotá] -&gt; Calendario de sede, segunda instancia en apelaciones
+
+    |
+
+[Consejo de Facultad de Ingeniería] -&gt; Primera instancia de solicitudes académicas y disciplinarias
+
+    |
+
+[Comité Asesor de Programa Curricular] -&gt; Asuntos específicos de la carrera (Sistemas, Civil, Mecánica, etc.)
+
+2. Nivel Nacional: Estatutos y Normas Generales
+
+Acuerdo 008 de 2008 del CSU - Estatuto Estudiantil (Disposiciones Académicas)
+
+Pérdida de la calidad de estudiante (Artículos 43 al 48):
+
+Por no alcanzar un PAPA (Promedio Aritmético Ponderado Acumulado) mínimo de 3.0 al finalizar el período académico.
+
+Por agotamiento de cupo de créditos disponibles sin completar el plan de estudios.
+
+Por no formalizar matrícula en los plazos previstos.
+
+Por sanción disciplinaria de expulsión o suspensión.
+
+Cupo de Créditos y Matrícula (Artículos 10 al 14):
+
+Fórmula de créditos asignados por periodo académico según el PAPA.
+
+Cancelación ordinaria de asignaturas dentro de las fechas fijadas por el calendario de sede.
+
+Cancelación extemporánea por causas de fuerza mayor o caso fortuito debidamente comprobadas ante el Consejo de Facultad.
+
+Reserva de Cupo y Reingreso (Artículos 22 al 26):
+
+Procedimiento para suspender temporalmente los estudios (reserva de cupo) por un máximo de dos períodos consecutivos o no.
+
+Trámite de reingreso ante la Dirección de Registro y Matrícula.
+
+Traslados y Doble Titulación:
+
+Requisitos de PAPA y cupo de créditos para solicitar traslado de carrera o aspirar al programa de doble titulación.
+
+Acuerdo 044 de 2009 del CSU - Estatuto Estudiantil (Disposiciones Disciplinarias)
+
+Clasificación de Faltas: Faltas leves, graves y gravísimas (fraude académico, alteración de documentos, agresiones, daño a bienes institucionales).
+
+Sanciones: Amonestación escrita, suspensión de matrícula de uno a cuatro semestres, expulsión definitiva.
+
+Garantías y Debido Proceso: Derecho a la defensa, notificación formal, presentación de pruebas y recursos de ley (reposición y apelación).
+
+Acuerdo 011 de 2005 del CSU - Estatuto General de la UNAL
+
+Define las atribuciones y competencias de cada órgano de gobierno universitario.
+
+Regula la participación estudiantil con voz y voto en los cuerpos colegiados (CSU, Consejo Académico, Consejos de Sede, Consejos de Facultad y Comités Asesores).
+
+Acuerdo 033 de 2007 del CSU - Lineamientos Curriculares de Formación
+
+Estructura los planes de estudio en tres componentes:
+
+Componente de Fundamentación (ciencias básicas, matemáticas, física, herramientas transversales).
+
+Componente de Formación Disciplinar o Profesional (materias propias de la ingeniería específica).
+
+Componente de Libre Elección (mínimo el 20% del total de créditos del plan de estudios).
+
+3. Nivel Facultad de Ingeniería (Sede Bogotá)
+
+Solicitudes Académicas y Conducto Regular (Secretaría de Facultad)
+
+Radicación de Solicitud: Se presenta ante el Consejo de Facultad de Ingeniería a través del Sistema de Información Académica (SIA).
+
+Concepto del Comité Asesor: El Comité Asesor de la carrera emite un concepto previo (favorable, desfavorable o aplazado).
+
+Decisión del Consejo de Facultad: El Consejo expide una resolución.
+
+Recursos:
+
+Recurso de Reposición: Se interpone ante el mismo Consejo de Facultad dentro de los 10 días hábiles siguientes a la notificación.
+
+Recurso de Apelación: Se interpone en subsidio de la reposición para que resuelva el Consejo de Sede Bogotá en segunda instancia.
+
+Modalidades de Trabajo de Grado (Resolución 4311 de 2016 de Facultad)
+
+Los estudiantes de cualquier ingeniería en la Sede Bogotá pueden optar por una de las siguientes alternativas (6 créditos):
+
+Asignaturas de Posgrado: Cursar y aprobar asignaturas de un programa de maestría o especialización afín ofrecido por la Universidad.
+
+Prácticas de Extensión:
+
+Pasantía en empresa del sector productivo.
+
+Emprendimiento empresarial.
+
+Proyecto de extensión solidaria o social.
+
+Proyecto de Investigación / Monografía: Trabajo individual o en grupo bajo la dirección de un docente tutor vinculado a un grupo de investigación.
+
+4. Nivel Específico: Ingeniería de Sistemas y Computación (Sede Bogotá)
+
+Planes de Estudio y Normativa Curricular
+
+Acuerdo 003-A de 2022 del Consejo Académico: Actualización del plan de estudios de Ingeniería de Sistemas y Computación (código SNIES 26).
+
+Acuerdo 006 de 2023 del Consejo de Facultad de Ingeniería: Plan de estudios detallado y ordenamiento de asignaturas.
+
+Acuerdo 026 de 2014 del Consejo de Facultad de Ingeniería: Objetivos de formación, perfil profesional y competencias del Ingeniero de Sistemas.
+
+Núcleos Temáticos y Líneas de Énfasis
+
+Sistemas Inteligentes e Inteligencia Artificial
+
+Ingeniería de Software y Arquitectura de Sistemas
+
+Infraestructura Computacional, Redes y Seguridad Informática
+
+Modelado Matemático, Simulación y Optimización
+
+5. Otros Estamentos Clave para Estudiantes de Ingeniería
+
+Bienestar Universitario (Acuerdo 007 de 2010 CSU)
+
+Apoyos Socioeconómicos: Apoyo alimentario, bono de transporte, alojamiento universitario.
+
+Salud Estudiantil: Servicio Médico Estudiantil, atención psicológica y póliza de accidentes escolares.
+
+Actividades Culturales y Deportivas: Torneos interfacultades, talleres artísticos y grupos representativos.
+
+Dirección de Relaciones Exteriores (DRE / ORI Sede Bogotá)
+
+Movilidad Internacional: Convocatorias semestrales para cursar períodos académicos en universidades del exterior con reconocimiento de créditos.
+
+Requisitos Generales: Haber aprobado al menos el 40%-50% de los créditos, tener PAPA superior al mínimo exigido en la convocatoria y certificación de idioma según el país de destino.
+
+Dirección Nacional de Extensión e Innovación
+
+Marco para la creación de iniciativas de base tecnológica, spin-offs y pasantías en convenio institucional.

@@ -1,0 +1,129 @@
+Directorio Normativo y Enlaces Oficiales - Todas las Ingenierías (UNAL - Sede Bogotá)
+
+Este documento centraliza el catálogo normativo oficial y los enlaces directos de todos los estamentos de la Universidad Nacional de Colombia (Sede Bogotá) para alimentación del pipeline RAG.
+
+1. Portales Oficiales de Consulta Jurídica y Académica
+
+Régimen Legal General de la UNAL: https://legal.unal.edu.co/
+
+Repositorio oficial con todos los Acuerdos del CSU, Consejo Académico, Resoluciones de Rectoría y Vicerrectoría.
+
+Dirección Nacional de Programas de Pregrado - Marco Normativo: https://pregrado.unal.edu.co/marconormativo
+
+Compendio de normas transversales de pregrado (Acuerdo 008/2008, Acuerdo 033/2007, traslados, cupos de créditos).
+
+Secretaría de Facultad de Ingeniería (Sede Bogotá): https://ingenieria.bogota.unal.edu.co/es/secretaria-de-facultad/
+
+Trámites estudiantiles, resoluciones del Consejo de Facultad, recursos de reposición y apelación.
+
+Preguntas Frecuentes y Procedimientos de Facultad: https://ingenieria.bogota.unal.edu.co/es/preguntas-frecuentes/
+
+Reglamento de trabajo de grado (Resolución 4311/2016), prácticas y pasantías.
+
+2. Normativa por Carrera - Facultad de Ingeniería (Sede Bogotá)
+
+Cada carrera cuenta con acuerdos del Consejo Académico (estructura general) y acuerdos del Consejo de Facultad (planes de estudio detallados):
+
+1. Ingeniería de Sistemas y Computación
+
+Estructura del Plan de Estudios: Acuerdo 003-A de 2022 del Consejo Académico.
+
+Plan de Estudios Detallado: Acuerdo 006 de 2023 del Consejo de Facultad de Ingeniería.
+
+Competencias y Objetivos de Formación: Acuerdo 026 de 2014 del Consejo de Facultad de Ingeniería.
+
+Malla Curricular: https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Malla_Plan_de_estudios_estndar_2023.pdf
+
+Área Curricular: Ingeniería de Sistemas e Industrial (Edificio CADE, Oficina 103).
+
+2. Ingeniería Industrial
+
+Estructura y Planes de Estudio: Acuerdo 33 de 2016 del Consejo de Facultad de Ingeniería.
+
+Malla Curricular y Proyectos: https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/IngenieriaIndustrial/
+
+Área Curricular: Ingeniería de Sistemas e Industrial.
+
+3. Ingeniería Civil
+
+Estructura Curricular: Acuerdos del Consejo Académico y Consejo de Facultad de Ingeniería.
+
+Área Curricular: Ingeniería Civil y Agrícola.
+
+Especialidades: Geotecnia, Estructuras, Hidráulica, Vías y Transporte.
+
+4. Ingeniería Mecánica
+
+Planes de Estudio: Acuerdos del Consejo de Facultad de Ingeniería.
+
+Área Curricular: Ingeniería Mecánica y Mecatrónica.
+
+Componentes: Diseño mecánico, conversión de energía, materiales y manufactura.
+
+5. Ingeniería Mecatrónica
+
+Planes de Estudio: Reglamentado por el Consejo de Facultad de Ingeniería.
+
+Área Curricular: Ingeniería Mecánica y Mecatrónica.
+
+Componentes: Control, robótica, automatización y sistemas ciberfísicos.
+
+6. Ingeniería Eléctrica
+
+Estructura Curricular: Acuerdos del Consejo de Facultad de Ingeniería.
+
+Área Curricular: Ingeniería Eléctrica y Electrónica.
+
+Campos: Sistemas de potencia, energía renovable, alta tensión y mercados energéticos.
+
+7. Ingeniería Electrónica
+
+Estructura Curricular: Acuerdos del Consejo de Facultad de Ingeniería.
+
+Área Curricular: Ingeniería Eléctrica y Electrónica.
+
+Campos: Procesamiento de señales, telecomunicaciones, microelectrónica y sistemas embebidos.
+
+8. Ingeniería Química
+
+Estructura Curricular: Acuerdos del Consejo de Facultad de Ingeniería.
+
+Área Curricular: Ingeniería Química y Ambiental.
+
+Campos: Procesos de separación, biotecnología, termodinámica y reactores.
+
+9. Ingeniería Agrícola
+
+Estructura Curricular: Acuerdos del Consejo de Facultad de Ingeniería.
+
+Área Curricular: Ingeniería Civil y Agrícola.
+
+Campos: Riego y drenaje, maquinaria agrícola, poscosecha y construcciones rurales.
+
+3. Bienestar Universitario y Apoyos Estudiantiles
+
+Marco Normativo de Bienestar: Acuerdo 007 de 2010 del CSU.
+
+Convocatorias de Fomento Socioeconómico: Dirección de Bienestar de Sede Bogotá.
+
+Apoyo Alimentario (comedor central y cafeterías de facultad).
+
+Apoyo de Alojamiento y Residencia Universitaria.
+
+Apoyo para Transporte.
+
+Préstamos Estudiantiles y Becas de Estudiantes Sobresalientes.
+
+4. Movilidad Académica y Convenios (DRE / ORI)
+
+Estatuto de Movilidad: Resoluciones de la Rectoría y Vicerrectoría Académica.
+
+Requisitos clave:
+
+Estar matriculado y tener la calidad de estudiante activa.
+
+Mínimo 40% a 50% de avance en créditos.
+
+PAPA igual o superior al umbral de la convocatoria específica.
+
+Certificación de suficiencia de idioma para destinos de habla no hispana.
