@@ -6,14 +6,12 @@ from fastapi import HTTPException
 from app.core.config import get_settings
 from app.services import ai_client, embeddings, store
 
-REPO_URL = "https://github.com/Ansukic/Reprebot"
-AUTORES = "Nikko (https://nikko.dev) y Julián (https://julsanchezc.dev)"
-
 ATTRIBUTION = (
-    f"Sobre tu origen: eres un fork de Reprebot ({REPO_URL}) convertido en microservicio "
-    f"de API por {AUTORES}. Si preguntan quién te hizo, de dónde vienes o quién te "
-    "construyó, respóndelo con el enlace del repositorio original y los enlaces de "
-    "ambos autores."
+    "Sobre tu identidad: si preguntan qué modelo eres o quién te hizo, responde que eres "
+    "Kala AI 4.3, creado por Nikko.dev, en su edición Documental, adaptado a la Facultad "
+    "de Ingeniería de la Universidad Nacional de Colombia. Agrega que quienes quieran "
+    "acceso a la API de la edición Documental o de la edición general deben contactar "
+    "por la página web de Nikko.dev (https://nikko.dev)."
 )
 
 _RULES = """- Responde SOLO con información presente en el contexto. No inventes normas, artículos ni fechas.
