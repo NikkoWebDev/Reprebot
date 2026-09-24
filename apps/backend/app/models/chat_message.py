@@ -32,6 +32,7 @@ class KalaaiChatResponse(BaseModel):
     answer: str
     sources: list[SourceChunk]
     usage: dict = Field(default_factory=dict)
+    reasoning: str | None = None
 
 
 class ChatRequest(BaseModel):
@@ -42,6 +43,7 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
     sources: list[SourceChunk]
+    reasoning: str | None = None
 
 
 class SearchRequest(BaseModel):

@@ -7,13 +7,21 @@ from fastapi import HTTPException
 from app.core.config import get_settings
 
 
-def _body(messages: list[dict], model: str | None, temperature: float) -> dict:
+def _body(
+    messages: list[dict],
+    model: str | None,
+    temperature: float,
+    max_tokens: int | None = None,
+) -> dict:
     s = get_settings()
-    return {
+    body: dict = {
         "model": model or s.groq_chat_model,
         "messages": messages,
         "temperature": temperature,
     }
+    if max_tokens:
+        body["max_tokens"] = max_tokens
+    return body
 
 
 def _headers() -> dict[str, str]:
@@ -25,13 +33,15 @@ def chat(
     model: str | None = None,
     temperature: float = 0.2,
     with_usage: bool = False,
-) -> str | tuple[str, dict]:
+    max_tokens: int | None = None,
+) -> str | tuple[str, dict, str]:
+    """Chat simple. Con with_usage devuelve (contenido, usage, reasoning nativo)."""
     s = get_settings()
     try:
         r = httpx.post(
             f"{s.groq_base_url}/chat/completions",
             headers=_headers(),
-            json=_body(messages, model, temperature),
+            json=_body(messages, model, temperature, max_tokens),
             timeout=120,
         )
     except httpx.HTTPError as e:
@@ -39,16 +49,17 @@ def chat(
     if r.status_code != 200:
         raise HTTPException(502, f"groq respondió {r.status_code}: {r.text[:300]}")
     data = r.json()
-    content = data["choices"][0]["message"]["content"]
+    msg = data["choices"][0]["message"]
+    content = msg.get("content") or ""
     if with_usage:
-        return content, data.get("usage", {})
+        return content, data.get("usage", {}), msg.get("reasoning") or ""
     return content
 
 
 def stream_chat(
     messages: list[dict], model: str | None = None, temperature: float = 0.2
-) -> Iterator[str]:
-    """Genera los deltas de texto de Groq en modo streaming."""
+) -> Iterator[tuple[str, str]]:
+    """Genera tuplas (kind, texto): kind es "reasoning" o "content" (nativo Groq)."""
     s = get_settings()
     payload = {**_body(messages, model, temperature), "stream": True}
     try:
@@ -71,10 +82,14 @@ def stream_chat(
                 if data == "[DONE]":
                     break
                 try:
-                    delta = json.loads(data)["choices"][0]["delta"].get("content")
+                    delta = json.loads(data)["choices"][0]["delta"]
                 except (json.JSONDecodeError, KeyError, IndexError):
                     continue
-                if delta:
-                    yield delta
+                raz = delta.get("reasoning")
+                if raz:
+                    yield ("reasoning", raz)
+                cont = delta.get("content")
+                if cont:
+                    yield ("content", cont)
     except httpx.HTTPError as e:
         raise HTTPException(502, f"no hubo conexión con groq: {e}") from e

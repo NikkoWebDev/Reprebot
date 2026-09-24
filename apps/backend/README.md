@@ -161,10 +161,10 @@ Campos del request:
 | `stream` | `bool` | `true` responde en SSE con el mismo protocolo de `/api/chat/stream`. |
 | `max_history` | `1..50` | Máximo de mensajes históricos que recibe el LLM (default `CHAT_MAX_HISTORY`, 10). |
 
-Respuesta (sin `stream`): `{"answer", "sources": [SourceChunk…], "usage": {prompt_tokens, completion_tokens, total_tokens, …}}`.
+Respuesta (sin `stream`): `{"answer", "sources": [SourceChunk…], "usage": {prompt_tokens, completion_tokens, total_tokens, …}, "reasoning": "…"}`. El `reasoning` es el razonamiento nativo del modelo (útil para un panel colapsable); en WhatsApp y foro se descarta automáticamente.
 
 Con `stream: true` emite eventos SSE:
-`data: {"type":"sources","sources":[…]}` → `data: {"type":"delta","text":"…"}` (repetidos) → `data: {"type":"done"}`.
+`data: {"type":"sources","sources":[…]}` → `data: {"type":"thought","text":"…"}` (razonamiento, repetidos) → `data: {"type":"delta","text":"…"}` (repetidos) → `data: {"type":"done","reasoning":"…"}`.
 
 - Requiere `X-Api-Key` solo si `WHATSAPP_API_KEY` tiene valor (igual que WhatsApp/foro); es la misma key del puente, así el chat web y el puente comparten llave.
 - `messages` sin ningún `role: "user"` devuelve 422.
