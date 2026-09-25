@@ -8,7 +8,6 @@ facultad: "Facultad de Ingeniería"
 departamento: "Departamento de Ingeniería de Sistemas e Industrial (DISI)"
 normas_base_vigentes:
   - "Acuerdo 011 de 2023 del Consejo de Facultad de Ingeniería (Plan de Estudios Vigente 165 créditos)"
-  - "Acuerdo 026 de 2012 del Consejo de Facultad de Ingeniería (Reglamento de Trabajos de Grado de Pregrado)"
   - "Acuerdo 008 de 2008 del Consejo Superior Universitario (Estatuto Estudiantil, Arts. 18, 19, 20 y 48)"
   - "Acuerdo 033 de 2007 del Consejo Superior Universitario (Estructura Curricular en 3 Componentes)"
 enlaces_legales_oficiales:
@@ -31,7 +30,7 @@ temas_clave:
 
 # Guía Exhaustiva de Opciones de Trabajo de Grado y Titulación (Sistemas Bogotá)
 
-Esta guía detalla las cuatro vías reglamentarias que tiene un estudiante de **Ingeniería de Sistemas y Computación** de la **Universidad Nacional de Colombia - Sede Bogotá** para culminar su ciclo formativo, obtener su titulación y optar por distinciones académicas, conforme al **Acuerdo 026 de 2012 del Consejo de Facultad de Ingeniería** y el **Acuerdo 011 de 2023 CF**.
+Esta guía detalla las cuatro vías reglamentarias que tiene un estudiante de **Ingeniería de Sistemas y Computación** de la **Universidad Nacional de Colombia - Sede Bogotá** para culminar su ciclo formativo, obtener su titulación y optar por distinciones académicas, conforme al **Acuerdo 011 de 2023 CF**.
 
 ---
 
