@@ -187,8 +187,48 @@ def _sources(results: list[dict]) -> list[dict]:
 
 
 def _retrieve(question: str, k: int) -> list[dict]:
+    """Retrieval híbrido: denso top-N + BM25 top-N, fusión RRF y rerank Jina.
+
+    Con ambos flags apagados degrada al denso puro anterior. Si el reranker
+    falla, se usa el orden RRF. Nunca devuelve vacío por el reranker.
+    """
+    from app.services import bm25, rerank
+
+    s = get_settings()
+    if not store.store.chunks:
+        return []
     query_vec = embeddings.embed([question], task="retrieval.query")[0]
-    return store.store.search(query_vec, k)
+    n_cand = max(s.rag_candidates, k)
+    densos = store.store.search(query_vec, n_cand)
+    if not densos or (not s.rag_bm25 and not s.rag_rerank):
+        return densos[:k]
+
+    id_a_idx = {c["id"]: i for i, c in enumerate(store.store.chunks)}
+    listas = [[id_a_idx[d["id"]] for d in densos if d["id"] in id_a_idx]]
+    if s.rag_bm25:
+        textos = [c.get("text", "") for c in store.store.chunks]
+        listas.append([i for i, _ in bm25.top(question, textos, n_cand)])
+
+    fusion = rerank.rrf(listas)[: max(s.rag_rerank_top, k)]
+    if s.rag_rerank:
+        textos_f = [store.store.chunks[i].get("text", "") for i in fusion]
+        rr = rerank.rerank(question, textos_f, k)
+        if rr is not None:
+            return [_ficha(fusion[i], rel) for i, rel in rr]
+
+    return [_ficha(idx, 1.0 / (1 + r)) for r, idx in enumerate(fusion[:k])]
+
+
+def _ficha(idx: int, score: float) -> dict:
+    c = store.store.chunks[idx]
+    return {
+        "doc_id": c["doc_id"],
+        "doc_name": c["doc_name"],
+        "text": c["text"],
+        "score": float(score),
+        "source_url": c.get("source_url"),
+        "doc_type": c.get("doc_type"),
+    }
 
 
 def _para_chat(texto: str) -> str:

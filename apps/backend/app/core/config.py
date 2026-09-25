@@ -37,6 +37,12 @@ class Settings(BaseSettings):
     # Chat con historial (endpoint /v1/chat/completions)
     chat_max_history: int = 10
 
+    # Retrieval híbrido: BM25 + denso con RRF y reranker Jina
+    rag_bm25: bool = True
+    rag_rerank: bool = True
+    rag_candidates: int = 20
+    rag_rerank_top: int = 16
+
     # Puente de WhatsApp (apps/whatsapp)
     whatsapp_api_key: str = ""
     whatsapp_max_chars: int = 700
