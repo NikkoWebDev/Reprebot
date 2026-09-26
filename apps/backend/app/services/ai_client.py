@@ -25,7 +25,10 @@ def _body(
 
 
 def _headers() -> dict[str, str]:
-    return {"Authorization": f"Bearer {get_settings().groq_api_key}"}
+    key = get_settings().groq_api_key
+    if not key:
+        raise HTTPException(500, "GROQ_API_KEY no está configurada en el servidor")
+    return {"Authorization": f"Bearer {key}"}
 
 
 def chat(
