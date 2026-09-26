@@ -27,10 +27,24 @@ function numEnv(valor, porDefecto) {
   return Number.isFinite(n) && n > 0 ? n : porDefecto;
 }
 
+function listaEnv(valor) {
+  return String(valor ?? '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 const config = {
   port: numEnv(process.env.PORT, 3000),
-  groupName: (process.env.WA_GROUP_NAME || '').trim(),
-  groupJid: (process.env.WA_GROUP_JID || '').trim() || null,
+  // Varios grupos: listas por coma. Las singulares legacy se suman.
+  groupNames: [
+    ...listaEnv(process.env.WA_GROUP_NAMES),
+    (process.env.WA_GROUP_NAME || '').trim(),
+  ].filter(Boolean),
+  groupJids: [
+    ...listaEnv(process.env.WA_GROUP_JIDS),
+    (process.env.WA_GROUP_JID || '').trim(),
+  ].filter(Boolean),
   triggers: (process.env.WA_TRIGGERS ?? '!repre,/repre')
     .split(',')
     .map((s) => s.trim())
@@ -59,8 +73,13 @@ const server = http.createServer((req, res) => {
       JSON.stringify({
         ok: true,
         connected: estado.connected,
-        group: config.groupJid,
-        groupName: config.groupName || null,
+        group: config.groupJids[0] || null,
+        groupName:
+          grupos.get(config.groupJids[0]) || config.groupNames[0] || null,
+        groups: config.groupJids.map((jid) => ({
+          jid,
+          name: grupos.get(jid) || null,
+        })),
       }),
     );
     return;
@@ -145,8 +164,8 @@ function listarGrupos() {
     .join(' | ');
 }
 
-async function resolverGrupo() {
-  if (config.groupJid || !sock) return;
+async function resolverGrupos() {
+  if (!sock) return;
 
   let todos;
   try {
@@ -160,29 +179,35 @@ async function resolverGrupo() {
   for (const g of lista) {
     if (g?.id) grupos.set(g.id, g.subject || '');
   }
+  // Siempre visible en logs: asi se copian los JID para WA_GROUP_JIDS.
+  log.warn(`Grupos vistos: ${listarGrupos() || 'ninguno'}`);
 
-  if (!config.groupName) {
-    log.warn(
-      `Sin WA_GROUP_NAME ni WA_GROUP_JID: no respondo a nadie. ` +
-        `Grupos vistos: ${listarGrupos() || 'ninguno'}`,
+  const fijos = new Set(config.groupJids);
+  for (const nombre of config.groupNames) {
+    const objetivo = normalizarNombre(nombre);
+    const coincidencias = lista.filter(
+      (g) => normalizarNombre(g.subject) === objetivo && !fijos.has(g.id),
     );
-    return;
+
+    if (coincidencias.length === 1) {
+      fijos.add(coincidencias[0].id);
+      log.warn(
+        `Grupo objetivo: "${coincidencias[0].subject}" <${coincidencias[0].id}>`,
+      );
+    } else if (coincidencias.length > 1) {
+      log.warn(
+        `Varios grupos coinciden con "${nombre}"; fija sus JID en WA_GROUP_JIDS:`,
+      );
+      for (const g of coincidencias) log.warn(`  ${g.subject} <${g.id}>`);
+    } else {
+      log.warn(`No encontre ningun grupo llamado "${nombre}".`);
+    }
   }
+  config.groupJids = [...fijos];
 
-  const objetivo = normalizarNombre(config.groupName);
-  const coincidencias = lista.filter((g) => normalizarNombre(g.subject) === objetivo);
-
-  if (coincidencias.length === 1) {
-    config.groupJid = coincidencias[0].id;
-    config.groupName = coincidencias[0].subject || config.groupName;
-    log.warn(`Grupo objetivo: "${config.groupName}" <${config.groupJid}>`);
-  } else if (coincidencias.length > 1) {
-    log.warn(`Varios grupos coinciden con "${config.groupName}"; no respondo hasta fijar WA_GROUP_JID:`);
-    for (const g of coincidencias) log.warn(`  ${g.subject} <${g.id}>`);
-  } else {
+  if (!config.groupJids.length) {
     log.warn(
-      `No encontre ningun grupo llamado "${config.groupName}". ` +
-        `Grupos vistos: ${listarGrupos() || 'ninguno'}`,
+      'Sin WA_GROUP_JIDS ni WA_GROUP_NAMES que resuelvan: no respondo a nadie.',
     );
   }
 }
@@ -209,7 +234,7 @@ async function conectar() {
     for (const g of nuevos || []) {
       if (g?.id) grupos.set(g.id, g.subject || grupos.get(g.id) || '');
     }
-    if (!config.groupJid) await resolverGrupo();
+    await resolverGrupos();
   });
 
   sock.ev.on('connection.update', async ({ connection, lastDisconnect, qr }) => {
@@ -224,7 +249,7 @@ async function conectar() {
       estado.qr = null;
       reintentoMs = 1000;
       log.warn(`Conectado como ${sock.user?.id || '(desconocido)'}`);
-      await resolverGrupo();
+      await resolverGrupos();
     }
 
     if (connection === 'close') {

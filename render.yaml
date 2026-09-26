@@ -84,10 +84,14 @@ services:
         value: https://reprebot-api.onrender.com
       - key: WHATSAPP_API_KEY
         sync: false
-      # un solo grupo: por nombre (case-insensitive) o por JID ...@g.us
+      # grupos permitidos (listas por coma). Las singulares legacy siguen valiendo.
       - key: WA_GROUP_NAME
         value: ceis
+      - key: WA_GROUP_NAMES
+        value: CEIS Consejo Estudiantil de Sistemas,CEIS Perfilamientos (Spam CEIS)
       - key: WA_GROUP_JID
+        sync: false
+      - key: WA_GROUP_JIDS
         sync: false
       - key: WA_TRIGGERS
         value: "!repre,/repre"

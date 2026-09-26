@@ -1,8 +1,8 @@
 // Handler de messages.upsert.
 //
-// Todas las reglas son fail-closed: ante cualquier duda, no responde. El unico
-// grupo valido es config.groupJid (resuelto por index.js); sin eso solo avisa
-// como configurarlo.
+// Todas las reglas son fail-closed: ante cualquier duda, no responde. Los
+// grupos validos son config.groupJids (resueltos por index.js); sin eso solo
+// avisa como configurarlo.
 
 import { jidNormalizedUser } from '@whiskeysockets/baileys';
 import { preguntar } from './backend.js';
@@ -136,7 +136,7 @@ export function crearHandler({ sock, config, log, grupos }) {
       gruposLogueados.add(remoteJid);
       log.warn(
         `Grupo detectado: ${remoteJid}${subject ? ` ("${subject}")` : ''}. ` +
-          'Configura WA_GROUP_NAME o WA_GROUP_JID.',
+          'Configura WA_GROUP_NAMES o WA_GROUP_JIDS.',
       );
     }
 
@@ -151,8 +151,8 @@ export function crearHandler({ sock, config, log, grupos }) {
       remoteJid,
       {
         text:
-          `Todavia no hay grupo configurado. Pasa WA_GROUP_JID=${remoteJid} ` +
-          'o pon WA_GROUP_NAME en las variables del servicio.',
+          `Todavia no hay grupo configurado. Pasa WA_GROUP_JIDS=${remoteJid} ` +
+          'o pon WA_GROUP_NAMES en las variables del servicio.',
       },
       { quoted: msg },
     );
@@ -184,9 +184,10 @@ export function crearHandler({ sock, config, log, grupos }) {
     const ahora = Date.now();
     limpiarDedupe(ahora);
 
-    // Un solo grupo.
-    if (config.groupJid) {
-      if (remoteJid !== config.groupJid) return;
+    // Varios grupos permitidos (fail-closed: si no hay ninguno, no responde).
+    const permitidos = config.groupJids || [];
+    if (permitidos.length) {
+      if (!permitidos.includes(remoteJid)) return;
     } else {
       await manejarGrupoDesconocido(msg, remoteJid, ahora);
       return;

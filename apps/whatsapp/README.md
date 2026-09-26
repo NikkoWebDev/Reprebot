@@ -44,8 +44,10 @@ que corresponda.
 | --- | --- | --- |
 | `BACKEND_URL` | `http://127.0.0.1:8000` | URL publica del backend. En Render free tiene que ser la publica (no hay red privada en free). |
 | `WHATSAPP_API_KEY` | vacio | Mismo valor que `WHATSAPP_API_KEY` del backend. Vacio = no manda el header `X-Api-Key`. |
-| `WA_GROUP_NAME` | vacio | Nombre exacto del grupo, comparado case-insensitive y sin espacios extra. |
-| `WA_GROUP_JID` | vacio | JID del grupo (`12036...@g.us`). Tiene prioridad sobre el nombre. |
+| `WA_GROUP_NAMES` | vacio | Nombres exactos de los grupos (separados por coma), comparados case-insensitive y sin espacios extra. Acepta varios. |
+| `WA_GROUP_JIDS` | vacio | JIDs de los grupos (`12036...@g.us`, separados por coma). Tiene prioridad sobre los nombres. |
+| `WA_GROUP_NAME` | vacio | Legacy: se suma a `WA_GROUP_NAMES`. |
+| `WA_GROUP_JID` | vacio | Legacy: se suma a `WA_GROUP_JIDS`. |
 | `WA_TRIGGERS` | `!repre,/repre` | Prefijos que disparan respuesta, separados por coma. |
 | `WA_COOLDOWN_SECONDS` | `20` | Espera por usuario entre respuestas. |
 | `WA_MAX_PER_MINUTE` | `6` | Tope global de respuestas por minuto (ventana deslizante). |
@@ -55,7 +57,7 @@ que corresponda.
 | `PORT` | `3000` | Puerto del servidor HTTP. |
 | `LOG_LEVEL` | `warn` | Nivel de pino. Baileys es muy verboso; `warn` no inunda los logs. |
 
-Si `WA_GROUP_NAME` y `WA_GROUP_JID` quedan vacios, el bot no responde a nadie
+Si `WA_GROUP_NAMES` y `WA_GROUP_JIDS` (y sus legacy) quedan vacios, el bot no responde a nadie
 pero loguea el JID de los grupos que ve.
 
 ## Despliegue en Render
@@ -75,8 +77,8 @@ Docker, plan free, healthcheck `/health`).
 
 ## Comportamiento
 
-- Responde en un solo grupo: el de `WA_GROUP_JID`, o el que coincida con
-  `WA_GROUP_NAME`. Si hay varios grupos con el mismo nombre, no responde hasta
+- Responde en los grupos de `WA_GROUP_JIDS`, o los que coincidan con
+  `WA_GROUP_NAMES`. Si hay varios grupos con el mismo nombre, no responde hasta
   que se fije el JID.
 - Disparadores: mencion al bot (`@Reprebot`) o que el texto empiece con alguno
   de `WA_TRIGGERS`.
