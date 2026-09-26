@@ -33,7 +33,7 @@ services:
         value: "1024"
       # 5173 = vite dev, 4173 = vite preview
       - key: CORS_ORIGINS
-        value: https://ceis-unal.com,https://www.ceis-unal.com,http://localhost:5173,http://localhost:4173,http://127.0.0.1:5173,http://127.0.0.1:4173
+        value: https://ceis-unal.com,https://www.ceis-unal.com,https://repre.nikko.dev,http://localhost:5173,http://localhost:4173,http://127.0.0.1:5173,http://127.0.0.1:4173
       - key: ADMIN_TOKEN
         sync: false
       - key: SUPABASE_URL

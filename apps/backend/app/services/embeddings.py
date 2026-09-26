@@ -14,6 +14,7 @@ import time
 
 import httpx
 import numpy as np
+from fastapi import HTTPException
 
 from app.core.config import get_settings
 
@@ -32,7 +33,12 @@ def _get_model():
     global _model
     if _model is None:
         # import perezoso: si se usa la API remota, fastembed/onnxruntime no se cargan
-        from fastembed import TextEmbedding
+        try:
+            from fastembed import TextEmbedding
+        except ImportError as e:
+            raise HTTPException(
+                500, "embeddings locales no disponibles y sin API configurada"
+            ) from e
 
         _model = TextEmbedding(get_settings().embeddings_model)
     return _model
@@ -73,11 +79,11 @@ def _embed_api(texts: list[str], task: str | None) -> np.ndarray:
             break
         else:
             if r is None:
-                raise RuntimeError("no se pudo contactar la API de embeddings (red)")
+                raise HTTPException(502, "no se pudo contactar la API de embeddings (red)")
 
         if r.status_code >= 400:
             # incluye el motivo: la API devuelve detalle util en el cuerpo
-            raise RuntimeError(f"embeddings API {r.status_code}: {r.text[:300]}")
+            raise HTTPException(502, f"embeddings API {r.status_code}: {r.text[:300]}")
 
         datos = sorted(r.json()["data"], key=lambda d: d["index"])
         salida.extend(d["embedding"] for d in datos)
