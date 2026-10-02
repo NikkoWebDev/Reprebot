@@ -1,6 +1,6 @@
 # Malla Curricular — Pregrado en Ingeniería de Sistemas y Computación (Plan Estándar 2023)
 
-> Fuente: "Malla Plan de estudios estándar 2023", Área Curricular de Ingeniería de Sistemas e Industrial, Universidad Nacional de Colombia — Sede Bogotá.
+> Fuente: "Malla Plan de estudios estándar 2023" (plan 2A74, 167 créditos, 187 con nivelación), Área Curricular de Ingeniería de Sistemas e Industrial, Universidad Nacional de Colombia — Sede Bogotá.
 > URL: https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Malla_Plan_de_estudios_estndar_2023.pdf
 
 ## Normas que estructuran el plan

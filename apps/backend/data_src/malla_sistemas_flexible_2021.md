@@ -1,6 +1,6 @@
 # Malla Curricular — Pregrado en Ingeniería de Sistemas y Computación (Plan Flexible 2021)
 
-> Fuente: "Malla - Plan de estudios flexible 2021", Área Curricular de Ingeniería de Sistemas e Industrial, Universidad Nacional de Colombia — Sede Bogotá.
+> Fuente: "Malla - Plan de estudios flexible 2021" (plan 2879, 165 créditos, 185 con nivelación), Área Curricular de Ingeniería de Sistemas e Industrial, Universidad Nacional de Colombia — Sede Bogotá.
 > URL: https://ingenieria.bogota.unal.edu.co/images/recursos/pregrado/ingenieriaSistemas/Malla_-_Plan_de_estudios_flexible_2021.pdf
 
 ## Normas que estructuran el plan

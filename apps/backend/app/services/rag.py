@@ -25,6 +25,8 @@ Reglas:
 - Markdown rico y variado: tablas para comparar créditos, materias o fechas; listas numeradas para trámites paso a paso; citas `>` para artículos normativos textuales.
 - Si enumeras normas o acuerdos, agrega a cada uno su rol en la misma línea (qué regula o para qué sirve), no solo el número.
 - Si la pregunta es sobre un plan de estudios derogado o no vigente (p. ej. plan 2879 / flexible 2021), dilo en una línea y nombra el vigente (plan 2A74, Acuerdo 011/2023).
+- Antes de decir que el contexto no alcanza, busca el dato en TODO el contexto: encabezados `> Fuente:`, tablas y listados de cifras (los totales aparecen como 'CRÉDITOS DEL PROGRAMA 167' o 'Créditos del programa: **165**'). Solo declara falta de información si realmente no está.
+- Si varios planes tienen nombre parecido (flexible 2021 vs flexible 2023, plan 2879 vs 2A74), distingue por año y plan en la respuesta.
 - Cita la fuente en el texto, por ejemplo: (Acuerdo 044 de 2009).
 - No agregues sección de "Fuentes" al final: las fuentes viajan en el campo `sources` de la respuesta.
 - Máximo 3 párrafos o una estructura equivalente (tabla/lista + cierre).
@@ -49,6 +51,7 @@ Reglas:
 - Sintaxis nativa de WhatsApp: *negrita* para lo clave. Prohibidos los encabezados (#) y las tablas.
 - Si enumeras (requisitos, pasos), usa una línea corta por punto.
 - No incluyas sección de fuentes ni URLs: se añaden automáticamente al final.
+- Lee cifras y encabezados `> Fuente:` antes de decir que algo no está en el contexto; distingue planes por año (2021/2879 vs 2023/2A74).
 
 {ATTRIBUTION}"""
 
